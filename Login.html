@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your B2B Marketplace</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #56CCF2, #2F80ED);
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .page-container {
+            background: linear-gradient(to bottom right, #56CCF2, #2F80ED);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        /* Animation for circles */
+        @keyframes moveCircles {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* Style for animated circles */
+        /* Adjust the z-index property for the circles */
+        .circle {
+            width: 60px;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            animation: moveCircles 5s infinite;
+            z-index: -1; /* Send circles to the background */
+        }
+
+        /* Rest of your existing styles */
+
+        /* Adjusted circle styles for a dynamic effect */
+        .circle1 {
+            top: 530px;
+            left: 50px;
+        }
+
+        .circle2 {
+            top: 80px;
+            left: 150px;
+        }
+
+        .circle3 {
+            top: 200px;
+            left: 100px;
+        }
+
+        .circle4 {
+            top: 350px;
+            left: 250px;
+        }
+
+        /* Styling for input fields and buttons */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            color: #ffffff;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 80%;
+            max-width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: background-color 0.3s ease;
+        }
+
+        input:focus {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* Distinct style for the "Login" button */
+        button, a {
+            width: 80%;
+            max-width: 300px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Distinct style for the "Register" button */
+        a.register-button {
+            background-color: #27ae60;
+        }
+
+        button:hover, a:hover {
+            background-color: #2980b9;
+        }
+
+        button:active, a:active {
+            transform: scale(0.95);
+        }
+
+        /* Add these styles to your existing CSS file */
+        .company-logo {
+            width: 100px; /* Adjust the width as needed */
+            height: 100px; /* Adjust the height as needed */
+            position: absolute;
+            top: 20px; /* Adjust the top position as needed */
+            left: 20px; /* Adjust the left position as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container" id="login-page">
+        <!-- Logo in the top left corner -->
+        <img src="Logo.gif" alt="Company Logo" class="company-logo">
+
+        <h1>Login</h1>
+        <form id="loginForm" onsubmit="redirectToPage(); return false;">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number" required>
+            <button type="submit">Login</button>
+            <a href="https://forms.gle/37x8JzppVBQhgQpZ8" target="_blank" class="register-button">Register</a>
+        </form>
+
+        <!-- Animated circles -->
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+    </div>
+
+    <!-- Add links to JS files or scripts here -->
+    <script>
+        function redirectToPage() {
+            var mobileNumber = document.getElementById('mobileNumber').value;
+            var userType = getUserType(mobileNumber);
+
+            if (userType === 'R') {
+                window.location.href = 'retailer.html';
+            } else if (userType === 'M') {
+                window.location.href = 'manufacturer.html';
+            } else {
+                alert('Invalid user type');
+            }
+        }
+
+        function getUserType(mobileNumber) {
+            return mobileNumber.toLowerCase().startsWith('r') ? 'R' :
+                mobileNumber.toLowerCase().startsWith('m') ? 'M' : '';
+        }
+    </script>
+</body>
+</html>
